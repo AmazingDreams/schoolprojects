@@ -5,6 +5,11 @@ import java.awt.GridLayout;
 import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -80,6 +85,14 @@ public class BeatBox {
 		JButton downTempo = new JButton("Tempo Down");
 		downTempo.addActionListener(new DownTempoListener());
 		buttonBox.add(downTempo);
+
+		JButton serialize = new JButton("Serialize");
+		serialize.addActionListener(new SerializeListener());
+		buttonBox.add(serialize);
+
+		JButton restore = new JButton("Restore");
+		restore.addActionListener(new RestoreListener());
+		buttonBox.add(restore);
 
 		Box nameBox = new Box(BoxLayout.Y_AXIS);
 		for(String s : instrumentNames) {
@@ -164,23 +177,66 @@ public class BeatBox {
 		}
 	}
 
-	class StopListener implements ActionListener  {
+	class StopListener implements ActionListener {
 		public void actionPerformed(ActionEvent a) {
 			sequencer.stop();
 		}
 	}
 
-	class UpTempoListener implements ActionListener  {
+	class UpTempoListener implements ActionListener {
 		public void actionPerformed(ActionEvent a) {
 			float tempoFactor = sequencer.getTempoFactor();
 			sequencer.setTempoFactor((float) (tempoFactor * 1.03));
 		}
 	}
 
-	class DownTempoListener implements ActionListener  {
+	class DownTempoListener implements ActionListener {
 		public void actionPerformed(ActionEvent a) {
 			float tempoFactor = sequencer.getTempoFactor();
 			sequencer.setTempoFactor((float) (tempoFactor * 0.97));
+		}
+	}
+
+	class SerializeListener implements ActionListener {
+		public void actionPerformed(ActionEvent a) {
+			boolean[] checkboxState = new boolean[256];
+
+			for(int i = 0; i < 256; i++) {
+				checkboxState[i] = checkboxList.get(i).isSelected();
+			}
+
+			try {
+				FileOutputStream s = new FileOutputStream(new File("checkbox.ser"));
+				ObjectOutputStream o = new ObjectOutputStream(s);
+				o.writeObject(checkboxState);
+
+				o.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	class RestoreListener implements ActionListener {
+		public void actionPerformed(ActionEvent a) {
+			boolean[] checkboxState = new boolean[256];
+
+			try {
+				FileInputStream s = new FileInputStream(new File("checkbox.ser"));
+				ObjectInputStream o = new ObjectInputStream(s);
+				checkboxState = (boolean[]) o.readObject();
+
+				o.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+
+			for(int i = 0; i < 256; i++) {
+				checkboxList.get(i).setSelected(checkboxState[i]);
+			}
+
+			sequencer.stop();
+			buildTrackAndStart();
 		}
 	}
 
