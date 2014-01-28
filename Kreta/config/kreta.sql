@@ -1,0 +1,9 @@
+CREATE TABLE `afhaalmenus` (
+	`id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT
+	, `naam_gerecht` VARCHAR(255) DEFAULT NULL
+	, `prijs` DECIMAL(10,2) DEFAULT NULL
+	, `ingredienten` TEXT DEFAULT NULL
+	, `recept` TEXT
+
+	, PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
