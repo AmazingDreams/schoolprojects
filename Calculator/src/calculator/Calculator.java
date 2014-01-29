@@ -68,6 +68,11 @@ public class Calculator extends JApplet {
 	private JTextField calcField;
 
 	/**
+	 * @var  double  Memory
+	 */
+	private double memory = 0;
+
+	/**
 	 * This init() is called when the app is an applet
 	 */
 	public void init() {
@@ -126,7 +131,7 @@ public class Calculator extends JApplet {
 		p.add(placeHolder);
 
 		createNorthButton("Backspace", p).addActionListener(new BackspaceActionListener());
-		createNorthButton("CE", p);
+		createNorthButton("CE", p).addActionListener(new CEActionListener());
 		createNorthButton("C", p).addActionListener(new CActionListener());
 
 		return p;
@@ -188,25 +193,22 @@ public class Calculator extends JApplet {
 	/**
 	 * Calculate the result using the text currently in the field
 	 */
-	public void calcResult() {
+	public double calcResult(String text) {
 		// We use the build-in JavaScript engine to calculate the result
 		// this saves us a lot of weird conversions and complex calculations
 		ScriptEngineManager sem = new ScriptEngineManager();
 		ScriptEngine engine = sem.getEngineByName("JavaScript");
 
-		String text = calcField.getText();
-
 		// Do some pre processing to allow javascript to do something with it
 		text = text.replace("sqrt(", "Math.sqrt(");
 
 		try {
-			String result = ""+ engine.eval(text);
-
-			calcField.setText(result);
-			fieldIsResult = true; // Flag the contents of the field as a result
+			return (double) engine.eval(text);
 		} catch (ScriptException e) {
 			JOptionPane.showMessageDialog(null, "Er was een probleem met het evalueren van uw input", "foutmelding", JOptionPane.ERROR_MESSAGE);
 		}
+
+		return 0.0;
 	}
 
 	/**
@@ -259,6 +261,7 @@ public class Calculator extends JApplet {
 	private JButton createWestButton(String contents, JPanel p) {
 		JButton b = createButton(contents, p);
 		b.setPreferredSize(new Dimension(BUTTON_HEIGHT, BUTTON_HEIGHT));
+		b.addActionListener(new MemoryActionListener());
 
 		return b;
 	}
@@ -326,7 +329,8 @@ public class Calculator extends JApplet {
 
 			// Some buttons have special uses
 			if(sourceText.equals("=")) { // Calculate the result
-				calcResult();
+				calcField.setText(""+calcResult(calcField.getText()));
+				fieldIsResult = true;
 			} else if(sourceText.equals("sqrt")) { // Square root needs a '('
 				textToAdd = "sqrt(";
 			} else if(sourceText.equals("+/-") && origText.length() > 0) { // Toggle negative/non-negative number
@@ -369,7 +373,7 @@ public class Calculator extends JApplet {
 	}
 
 	/**
-	 * THis class handles the C button
+	 * This class handles the C button
 	 */
 	class CActionListener implements ActionListener {
 		/**
@@ -380,6 +384,48 @@ public class Calculator extends JApplet {
 		public void actionPerformed(ActionEvent ev) {
 			// C will simply clear the field
 			calcField.setText("");
+		}
+	}
+
+	/**
+	 * This class handles the CE button
+	 */
+	class CEActionListener implements ActionListener {
+		/**
+		 * Responds to a click on the button
+		 *
+		 * @param  ActionEvent  The event object
+		 */
+		public void actionPerformed(ActionEvent ev) {
+			// C will simply clear the field
+			String newText = calcField.getText().replaceAll("[0-9]+$", "");
+			calcField.setText(newText);
+		}
+	}
+
+	/**
+	 * This class handles all the memory actions
+	 */
+	class MemoryActionListener implements ActionListener {
+		/**
+		 * Respons to a click on the button
+		 *
+		 * @param  ActionEvent  The event object
+		 */
+		public void actionPerformed(ActionEvent ev) {
+			JButton source    = (JButton) ev.getSource();
+			String sourceText = source.getText();
+
+			if(sourceText.equals("MC")) {
+				memory = 0.0; // Clear memory
+			} else if (sourceText.equals("MR")) {
+				calcField.setText(""+memory);
+				fieldIsResult = true;
+			} else if (sourceText.equals("MS") && fieldIsResult) {
+				memory = Double.parseDouble(calcField.getText());
+			} else if (sourceText.equals("M+") && fieldIsResult) {
+				memory = calcResult(memory+"+"+calcField.getText());
+			}
 		}
 	}
 }
