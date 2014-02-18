@@ -24,56 +24,57 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 /**
+ * Calculator
  * This class manages the entire calculator
  *
- * @package   Calculator
+ *
  * @author    Dennis Ruhe
- * @copyright (c) 2014 Dennis Ruhe
  */
 public class Calculator extends JApplet {
 
 	/**
-	 * @var  long  Serial version UID
+	 * long  Serial version UID
 	 */
 	public static final long serialVersionUID = 1;
 
 	/**
-	 * @var  int  Default button height
+	 * int  Default button height
 	 */
 	public static final int BUTTON_HEIGHT = 45;
 
 	/**
-	 * @var  String  The text to put in the textfield at startup
+	 * String  The text to put in the textfield at startup
 	 */
 	public static final String DEFAULT_TEXT = "0.";
 
 	/**
-	 * @var  boolean  A flag whether the text in the calcField is the result of a calculation
+	 * boolean  A flag whether the text in the calcField is the result of a calculation
 	 */
 	private boolean fieldIsResult;
 
 	/**
-	 * @var  Container  The container of our app
+	 * Container  The container of our app
 	 */
 	private Container container;
 
 	/**
-	 * @var  JPanel  The 'root' panel
+	 * JPanel  The 'root' panel
 	 */
 	private JPanel panel;
 
 	/**
-	 * @var  JTextField  The field in which the calculations are created
+	 * JTextField  The field in which the calculations are created
 	 */
 	private JTextField calcField;
 
 	/**
-	 * @var  double  Memory
+	 * double  Memory
 	 */
 	private double memory = 0;
 
 	/**
-	 * This init() is called when the app is an applet
+	 * This method is called when the app is an applet
+	 * This will prepare for the app being used as an in-browser applet
 	 */
 	public void init() {
 		this.container = getContentPane();
@@ -82,7 +83,8 @@ public class Calculator extends JApplet {
 	}
 
 	/**
-	 * This go() is called when the app is started from the jar file
+	 * This method is called when the app is started from the jar file
+	 * This will prepare the app for being used as a standalone application
 	 */
 	public void go() {
 		// Create a frame and set the container
@@ -191,7 +193,7 @@ public class Calculator extends JApplet {
 	}
 
 	/**
-	 * Calculate the result using the text currently in the field
+	 * Calculate the result from a string containing a calculation
 	 */
 	public double calcResult(String text) {
 		// We use the build-in JavaScript engine to calculate the result
@@ -214,7 +216,7 @@ public class Calculator extends JApplet {
 	/**
 	 * This will run when the application is run from the jar file
 	 *
-	 * @param   String[]  Arguments
+	 * @param  args  Arguments
 	 */
 	public static void main(String[] args) {
 		Calculator app = new Calculator();
@@ -281,7 +283,7 @@ public class Calculator extends JApplet {
 	}
 
 	/**
-	 * Check if String b is a number
+	 * Check if string b is a number
 	 *
 	 * @param   String   The string to check
 	 * @return  boolean  String is a number or not
