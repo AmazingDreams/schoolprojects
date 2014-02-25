@@ -1,6 +1,7 @@
 package calc;
+
 import java.awt.event.*;
-import java.awt.*;
+import javax.swing.*;
 
 /**
  * @file         ButtonHandler.java
@@ -66,13 +67,13 @@ class ButtonHandler implements ActionListener {
 	 */
 	public void actionPerformed( ActionEvent e )
 	{
-		//store the instance of the button that was pressed
-		ButtonComponent button = (ButtonComponent) e.getSource();
+		// Store the instance of the button that was pressed
+		JButton button = (JButton) e.getSource();
 
-		//get the button's label
-		String s = button.getLabel().trim();
+		// Get the button's label
+		String s = button.getText().trim();
 
-		//determine if the button was a number or operator button
+		// Determine if the button was a number or operator button
 		if ( Character.isDigit(s.charAt(0)))
 			handleNumber( s );
 		else if (Memory.isMemoryButton( s ))
@@ -81,8 +82,6 @@ class ButtonHandler implements ActionListener {
 			calculate( s );
 	}
 
-//determine's whether the operator is unary or binary
-//and does calculation's according to operator type
 	/**
 	 * Determines whether the operator is unary or binary
 	 * and does calculations according to the operator type
@@ -196,7 +195,6 @@ class ButtonHandler implements ActionListener {
 		clear();
 	}
 
-	// handles operators that require two operands
 	/**
 	 * Handles operators that require two operands
 	 *
@@ -227,8 +225,8 @@ class ButtonHandler implements ActionListener {
 	 */
 	void handleNumber( String s )
 	{
-		//concatenate to strVal if an operator was pressed before the current
-		//button
+		// Concatenate to strVal if an operator was pressed before the current
+		// button
 		if ( ! operatorPressed) {
 			strVal += s;
 

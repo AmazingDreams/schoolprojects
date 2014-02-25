@@ -1,7 +1,8 @@
 package calc;
 
-import java.awt.*;
+import java.awt.BorderLayout;
 import java.awt.event.*;
+import javax.swing.JFrame;
 
 /**
  * @file         AwtCalcApp.java
@@ -16,9 +17,9 @@ class AwtCalcApp {
 	 */
 	public static void main( String args[] )
 	{
-		Frame fr = new Frame();
+		JFrame fr = new JFrame();
 		fr.setTitle("Awt Calculator");
-		fr.setSize(310, 175);
+		fr.setSize(450, 200);
 		fr.setResizable(false);
 		fr.add(new AwtCalc(), BorderLayout.CENTER);
 		fr.setVisible(true);

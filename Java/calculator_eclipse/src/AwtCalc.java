@@ -1,24 +1,29 @@
 package calc;
 
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.*;
-import java.awt.Graphics;
+import javax.swing.*;
 
 /**
  * @file          AwtCalc.java
  * @version       1.1
  * @description   A simple calculator that uses AWT component's.
  */
-public class AwtCalc extends Panel
+public class AwtCalc extends JPanel
 {
+	public static final long serialVersionUID = 1;
+
 	/**
 	 * @var  String[]  Labels for the number panel of the calculator
 	 */
 	private String[] numPanelText = {
-		" 1 ",          " 2 ", " 3 ",
-		" 4 ",          " 5 ", " 6 ",
-		" 7 ",          " 8 ", " 9 ",
-		Operator.CLEAR, " 0 ", Operator.DOT
+		"1",            "2", "3",
+		"4",            "5", "6",
+		"7",            "8", "9",
+		Operator.CLEAR, "0", Operator.DOT
 	};
 
 	/**
@@ -45,22 +50,22 @@ public class AwtCalc extends Panel
 	/**
 	 * @var  Panel  Used to hold the number buttons
 	 */
-	private Panel numButtonPanel;
+	private JPanel numButtonPanel;
 
 	/**
 	 * @var  Panel  Used to hold the operator buttons
 	 */
-	private Panel operButtonPanel;
+	private JPanel operButtonPanel;
 
 	/**
 	 * @var  Panel  Used to hold the memory buttons
 	 */
-	private Panel memButtonPanel;
+	private JPanel memButtonPanel;
 
 	/**
 	 * @var  Panel3D  Used for the calculator's display
 	 */
-	private Panel3D displayPanel;
+	private JPanel displayPanel;
 
 	/**
 	 * @var  ButtonHandler  Action listener for the buttons
@@ -87,12 +92,12 @@ public class AwtCalc extends Panel
 		setLayout(new BorderLayout());
 		setBackground(new Color(212, 208, 200));
 
-		Panel3D mainPanel = new Panel3D(Border3D.EXCLUDE_TOP_BORDER);
+		JPanel mainPanel = new JPanel();
 
-		numButtonPanel  = new Panel(new GridLayout(4, 3, 1, 1));
-		operButtonPanel = new Panel(new GridLayout(4, 2, 1, 1));
-		memButtonPanel  = new Panel(new GridLayout(4, 1, 1 ,1));
-		displayPanel    = new Panel3D(Border3D.EXCLUDE_BOTTOM_BORDER);
+		numButtonPanel  = new JPanel(new GridLayout(4, 3, 1, 1));
+		operButtonPanel = new JPanel(new GridLayout(4, 2, 1, 1));
+		memButtonPanel  = new JPanel(new GridLayout(4, 1, 1 ,1));
+		displayPanel    = new JPanel();
 		display         = new CalcDisplay(192,26);
 		handler         = new ButtonHandler(display);
 
@@ -111,12 +116,12 @@ public class AwtCalc extends Panel
 	 *
 	 * @return  Panel  The number panel
 	 */
-	private Panel createNumberPanel() {
+	private JPanel createNumberPanel() {
 		if (display != null) {
-			ButtonComponent btn = null;
+			JButton btn = null;
 
 			for(int i = 0; i < numPanelText.length; i++) {
-				btn = new ButtonComponent(numPanelText[i]);
+				btn = new JButton(numPanelText[i]);
 				btn.addActionListener(handler);
 				btn.setFont(buttonfont);
 				numButtonPanel.add(btn);
@@ -131,11 +136,11 @@ public class AwtCalc extends Panel
 	 *
 	 * @return  Panel  The operator panel
 	 */
-	private Panel createOperPanel() {
-		ButtonComponent btn = null;
+	private JPanel createOperPanel() {
+		JButton btn = null;
 
 		for(int i = 0; i < operPanelText.length; i++) {
-			btn = new ButtonComponent(operPanelText[i]);
+			btn = new JButton(operPanelText[i]);
 			btn.setFont(buttonfont);
 			btn.addActionListener(handler);
 			operButtonPanel.add(btn);
@@ -149,11 +154,11 @@ public class AwtCalc extends Panel
 	 *
 	 * @return  Panel  The memory panel
 	 */
-	private Panel createMemButtonPanel() {
-		ButtonComponent btn = null;
+	private JPanel createMemButtonPanel() {
+		JButton btn = null;
 
 		for(int i = 0; i < memButtonPanelText.length; i++) {
-			btn = new ButtonComponent(memButtonPanelText[i]);
+			btn = new JButton(memButtonPanelText[i]);
 			btn.setFont(buttonfont);
 			btn.addActionListener(handler);
 			memButtonPanel.add(btn);

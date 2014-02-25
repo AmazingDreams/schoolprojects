@@ -1,13 +1,15 @@
 package calc;
 
-import java.applet.Applet;
-import java.awt.*;
+import java.awt.BorderLayout;
+import javax.swing.JApplet;
 
 /**
  * @file         AwtCalcApplet.java
  * @description  Allow's AwtCalc to be run as an applet.
  */
-public class AwtCalcApplet extends Applet {
+public class AwtCalcApplet extends JApplet {
+
+	public static final long serialVersionUID = 1;
 
 	/**
 	 * Initializes the applet
