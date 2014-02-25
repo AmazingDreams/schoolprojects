@@ -18,7 +18,7 @@ class AwtCalcApp {
 	{
 		Frame fr = new Frame();
 		fr.setTitle("Awt Calculator");
-		fr.setSize(220, 175);
+		fr.setSize(310, 175);
 		fr.setResizable(false);
 		fr.add(new AwtCalc(), BorderLayout.CENTER);
 		fr.setVisible(true);

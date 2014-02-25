@@ -1,28 +1,28 @@
 package calc;
 
 /**
- * File:         Operator.java
- * Description:  Utility class used for the calculator's operators
+ * @file         Operator.java
+ * @description  Utility class used for the calculator's operators
  */
 class Operator {
 
 	/**
-	 * @vars  Describe the different operators
+	 * @var  Describe the different operators
 	 */
-	final static String ADD = "+",
+	final static String ADD      = "+",
 	                    SUBTRACT = "-",
 	                    MULTIPLY = "x",
-	                    DIVIDE = "/",
-	                    POW = "pow",
-	                    SQRT = "sqrt",
-	                    CLEAR = "C",
-	                    EQUALS = "=",
-	                    NEGATE = "+/-",
-	                    DOT = ".",
-	                    LOG = "log",
-	                    COS = "cos",
-	                    SIN = "sin",
-	                    TAN = "tan";
+	                    DIVIDE   = "/",
+	                    POW      = "pow",
+	                    SQRT     = "sqrt",
+	                    CLEAR    = "C",
+	                    EQUALS   = "=",
+	                    NEGATE   = "+/-",
+	                    DOT      = ".",
+	                    LOG      = "log",
+	                    COS      = "cos",
+	                    SIN      = "sin",
+	                    TAN      = "tan";
 
 	/**
 	 * Is private to prevent class from being instantiated
@@ -38,11 +38,15 @@ class Operator {
 	 */
 	static boolean isUnary( String s )
 	{
-		return    s.equals( EQUALS )
-			   || s.equals( CLEAR )
-			   || s.equals( SQRT )
-			   || s.equals( NEGATE )
-			   || s.equals( DOT );
+		return s.equals( EQUALS )
+			|| s.equals( CLEAR )
+			|| s.equals( SQRT )
+			|| s.equals( NEGATE )
+			|| s.equals( DOT )
+			|| s.equals( LOG )
+			|| s.equals( COS )
+			|| s.equals( SIN )
+			|| s.equals( TAN );
 	}
 
 }
