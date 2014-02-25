@@ -1,13 +1,13 @@
 package calc;
 
 /**
- * @file         Memory.java
- * @description  Utility class used for the calculators memory buttons
+ * Memory.java
+ * Utility class used for the calculators memory buttons
  */
 class Memory {
 
 	/**
-	 * @var  Describe the different buttons
+	 * Describe the different buttons
 	 */
 	final static String CLEAR    = "MC",
 	                    READ     = "MR",

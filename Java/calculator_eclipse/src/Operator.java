@@ -1,13 +1,13 @@
 package calc;
 
 /**
- * @file         Operator.java
- * @description  Utility class used for the calculator's operators
+ * Operator.java
+ * Utility class used for the calculator's operators
  */
 class Operator {
 
 	/**
-	 * @var  Describe the different operators
+	 * Describe the different operators
 	 */
 	final static String ADD      = "+",
 	                    SUBTRACT = "-",

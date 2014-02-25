@@ -4,8 +4,8 @@ import java.awt.BorderLayout;
 import javax.swing.JApplet;
 
 /**
- * @file         AwtCalcApplet.java
- * @description  Allow's AwtCalc to be run as an applet.
+ * AwtCalcApplet.java
+ * Allow's AwtCalc to be run as an applet.
  */
 public class AwtCalcApplet extends JApplet {
 

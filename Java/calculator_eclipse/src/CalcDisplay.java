@@ -7,8 +7,8 @@ import java.awt.Rectangle;
 import javax.swing.*;
 
 /**
- * @file         CalcDisplay.java
- * @description  This class creates a display screan for AwtCalc
+ * CalcDisplay.java
+ * This class creates a display screan for AwtCalc
  */
 class CalcDisplay extends JTextField {
 
@@ -17,8 +17,8 @@ class CalcDisplay extends JTextField {
 	/**
 	 * Initialize a new CalcDisplay
 	 *
-	 * @param  int  Width
-	 * @param  int  Height
+	 * @param  w  Width
+	 * @param  h  Height
 	 */
 	CalcDisplay( int w, int h) {
 		setSize( w , h  );

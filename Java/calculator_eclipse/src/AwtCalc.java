@@ -8,16 +8,17 @@ import java.awt.event.*;
 import javax.swing.*;
 
 /**
- * @file          AwtCalc.java
+ * AwtCalc.java
+ * A simple calculator that uses AWT component's.
+ *
  * @version       1.1
- * @description   A simple calculator that uses AWT component's.
  */
 public class AwtCalc extends JPanel
 {
 	public static final long serialVersionUID = 1;
 
 	/**
-	 * @var  String[]  Labels for the number panel of the calculator
+	 * Labels for the number panel of the calculator
 	 */
 	private String[] numPanelText = {
 		"1",            "2", "3",
@@ -27,7 +28,7 @@ public class AwtCalc extends JPanel
 	};
 
 	/**
-	 * @var  String[]  Labels for the operator panel of the calculator
+	 * Labels for the operator panel of the calculator
 	 */
 	private String[] operPanelText = {
 		Operator.ADD,      Operator.POW,    Operator.COS,
@@ -37,7 +38,7 @@ public class AwtCalc extends JPanel
 	};
 
 	/**
-	 * @var  String[]  Labels for the memory panel of the calculator
+	 * Labels for the memory panel of the calculator
 	 */
 	private String[] memButtonPanelText = {
 		Memory.CLEAR,
@@ -48,37 +49,37 @@ public class AwtCalc extends JPanel
 	};
 
 	/**
-	 * @var  Panel  Used to hold the number buttons
+	 * Used to hold the number buttons
 	 */
 	private JPanel numButtonPanel;
 
 	/**
-	 * @var  Panel  Used to hold the operator buttons
+	 * Used to hold the operator buttons
 	 */
 	private JPanel operButtonPanel;
 
 	/**
-	 * @var  Panel  Used to hold the memory buttons
+	 * Used to hold the memory buttons
 	 */
 	private JPanel memButtonPanel;
 
 	/**
-	 * @var  Panel3D  Used for the calculator's display
+	 * Used for the calculator's display
 	 */
 	private JPanel displayPanel;
 
 	/**
-	 * @var  ButtonHandler  Action listener for the buttons
+	 * Action listener for the buttons
 	 */
 	private ButtonHandler handler;
 
 	/**
-	 * @var  CalcDisplay  Displays the output
+	 * Displays the output
 	 */
 	private CalcDisplay display;
 
 	/**
-	 * @var  Font  The font on the buttons
+	 * The font on the buttons
 	 */
 	private Font buttonfont;
 

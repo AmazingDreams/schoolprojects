@@ -4,48 +4,48 @@ import java.awt.event.*;
 import javax.swing.*;
 
 /**
- * @file         ButtonHandler.java
- * @description  Handle's what happen's when the button is pressed.
+ * ButtonHandler.java
+ * Handle's what happen's when the button is pressed.
  */
 class ButtonHandler implements ActionListener {
 
 	/**
-	 * @var  CalcDisplay  Holds instance of the calculators display
+	 * Holds instance of the calculators display
 	 */
 	private CalcDisplay display;
 
 	/**
-	 * @var  String  Holds the last operator that was pressed
+	 * Holds the last operator that was pressed
 	 */
 	private String lastOp;
 
 	/**
-	 * @var  String  Holds the string value of the number
+	 * Holds the string value of the number
 	 */
 	private String strVal;
 
 	/**
-	 * @var  double  The current total
+	 * The current total
 	 */
 	private double total;
 
 	/**
-	 * @var  double  Used to store the new numbers
+	 * Used to store the new numbers
 	 */
 	private double number;
 
 	/**
-	 * @var  double  Used to store the memory
+	 * Used to store the memory
 	 */
 	private double memory;
 
 	/**
-	 * @var  boolean  Flag used to determine if OP is pressed for the first time
+	 * Flag used to determine if OP is pressed for the first time
 	 */
 	private boolean firsttime;
 
 	/**
-	 * @var  boolean  Flag used to determine if an operator has been pressed
+	 * Flag used to determine if an operator has been pressed
 	 */
 	private boolean operatorPressed;
 

@@ -5,8 +5,8 @@ import java.awt.event.*;
 import javax.swing.JFrame;
 
 /**
- * @file         AwtCalcApp.java
- * @description  Allows AwtCalc to be run as a stand-alone application.
+ * AwtCalcApp.java
+ * Allows AwtCalc to be run as a stand-alone application.
  */
 class AwtCalcApp {
 
