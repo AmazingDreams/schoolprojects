@@ -25,6 +25,7 @@ class CalcDisplay extends JTextField {
 
 		this.setText("0");
 		this.setEditable(false);
+		this.setBackground(Color.WHITE);
 	}
 
 

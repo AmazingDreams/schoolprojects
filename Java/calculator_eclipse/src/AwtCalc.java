@@ -98,7 +98,7 @@ public class AwtCalc extends JPanel
 		operButtonPanel = new JPanel(new GridLayout(4, 2, 1, 1));
 		memButtonPanel  = new JPanel(new GridLayout(4, 1, 1 ,1));
 		displayPanel    = new JPanel();
-		display         = new CalcDisplay(192,26);
+		display         = new CalcDisplay(392,26);
 		handler         = new ButtonHandler(display);
 
 		displayPanel.add(display);
